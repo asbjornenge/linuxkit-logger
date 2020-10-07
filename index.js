@@ -1,4 +1,10 @@
 import net from 'net'
+const NODE_LABEL_IP    = process.env['NODE_LABEL_IP']
+const NODE_LABEL_NAME  = process.env['NODE_LABEL_NAME']
+const NODE_LABEL_TYPE  = process.env['NODE_LABEL_TYPE']
+const NODE_LABEL_ZONE  = process.env['NODE_LABEL_ZONE']
+const NODE_LABEL_CLOUD = process.env['NODE_LABEL_CLOUD']
+const NODE_LABEL_STATE = process.env['NODE_LABEL_STATE']
 
 var client = net.createConnection("/var/run/memlogdq.sock")
 
@@ -7,7 +13,7 @@ client.on('connect', function() {
 })
 
 client.on('data', function(data) {
-  console.log(data.toString())
+  console.log(`${NODE_LABEL_NAME}-${NODE_LABEL_IP} - ${data.toString()}`)
 })
 
 client.on('end', function() {
