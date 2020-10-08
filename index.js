@@ -13,7 +13,7 @@ client.on('connect', function() {
 })
 
 client.on('data', function(data) {
-  console.log(`${NODE_LABEL_NAME}-${NODE_LABEL_IP} - ${data.toString()}`)
+  console.log(`NODE: ${NODE_LABEL_NAME},${NODE_LABEL_IP} - LOG: ${data.toString()}`)
 })
 
 client.on('end', function() {
